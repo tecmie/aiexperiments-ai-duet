@@ -37,7 +37,6 @@ def predict():
     midi_data = pretty_midi.PrettyMIDI(StringIO(''.join(chr(v) for v in values)))
     duration = float(request.args.get('duration'))
     ret_midi = generate_midi(midi_data, duration)
-    print time.time() - now
     return send_file(ret_midi, attachment_filename='return.mid', 
         mimetype='audio/midi', as_attachment=True)
 
@@ -48,4 +47,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='127.0.0.1', port=8080)
